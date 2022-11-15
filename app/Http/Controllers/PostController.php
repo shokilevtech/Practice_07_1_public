@@ -46,6 +46,20 @@ class PostController extends Controller
         $post -> fill( $input ) -> save();
         return redirect( '/posts/' . $post -> id );
     }
+    
+    // ブログ投稿編集画面表示用コントローラー
+    public function edit( Post $post )
+    {
+        return view( 'posts/edit' ) -> with( ['post' => $post] );
+    }
+    
+    public function update( PostRequest $request, Post $post )
+    {
+        // サーバーに送られたかどうかチェックする→dd( $request->all() );
+        $input_post = $request[ 'post' ];
+        $post -> fill( $input_post ) -> save();
+        return redirect( '/posts/' . $post -> id );
+    }
 }
 ?>
 
