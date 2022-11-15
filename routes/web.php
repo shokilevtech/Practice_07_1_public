@@ -24,3 +24,7 @@ Route::get( '/posts/{post}', [PostController::class, 'show'] );
 
 //ブログ投稿作成実行用ルーティング
 Route::post( '/posts', [PostController::class, 'store'] );
+
+// ブログ投稿編集関連ルーティング
+Route::get( '/posts/{post}/edit', [ PostController::class, 'edit' ] );
+Route::put( '/posts/{post}', [ PostController::class, 'update' ] );
