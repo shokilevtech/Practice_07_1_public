@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 //この場合、App\Models内のPostクラスをインポートしている。
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -18,8 +19,6 @@ class PostController extends Controller
         //blade内で使う変数'posts'と設定。
         //'posts'の中身にgetを使い、インスタンス化した$postを代入。
     }
-    
-    
     
     /**
     * 特定IDのpostを表示する
@@ -33,6 +32,20 @@ class PostController extends Controller
         // 'post'はbladeファイルで使う変数。$postの中身はid=1のPostインスタンス。
     }
     
+    // ブログ投稿作成画面表示用のコントローラー実装
+    public function create()
+    {
+        return view( 'posts/create' );
+    }
+    
+    // ブログ投稿作成処理用のコントローラー実装
+    public function store( Post $post, PostRequest $request )
+    {
+        // サーバーに送られたかどうかチェックする→dd( $request->all() );
+        $input = $request[ 'post' ];
+        $post -> fill( $input ) -> save();
+        return redirect( '/posts/' . $post -> id );
+    }
 }
 ?>
 

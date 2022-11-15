@@ -16,6 +16,11 @@ use App\Http\Controllers\PostController; //外部にあるPostControllerクラ�
 
 Route::get( '/', [PostController::class, 'index'] );
 
+// ブログ投稿作成画面のルーティング
+Route::get( '/posts/create', [PostController::class, 'create'] );
 
 // '/posts/{対象データのID}'びGetリクエストが来たら、PostControllerのshowメソッドを実行する
 Route::get( '/posts/{post}', [PostController::class, 'show'] );
+
+//ブログ投稿作成実行用ルーティング
+Route::post( '/posts', [PostController::class, 'store'] );
