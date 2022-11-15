@@ -20,12 +20,8 @@ class PostController extends Controller
         //'posts'の中身にgetを使い、インスタンス化した$postを代入。
     }
     
-    /**
-    * 特定IDのpostを表示する
-    *
-    * @params Object Post // 引数の$postはid=1のPostインスタンス
-    * @return Reposnse post view
-    */
+    
+    // 特定IDのpostを表示する
     public function show( Post  $post )
     {
         return view( 'posts/show' ) -> with([ 'post' => $post ]);
@@ -53,12 +49,20 @@ class PostController extends Controller
         return view( 'posts/edit' ) -> with( ['post' => $post] );
     }
     
+    // ブログ編集内容で更新する
     public function update( PostRequest $request, Post $post )
     {
         // サーバーに送られたかどうかチェックする→dd( $request->all() );
         $input_post = $request[ 'post' ];
         $post -> fill( $input_post ) -> save();
         return redirect( '/posts/' . $post -> id );
+    }
+    
+    // 削除処理
+    public function delete( Post $post )
+    {
+        $post -> delete();
+        return redirect('/');
     }
 }
 ?>
