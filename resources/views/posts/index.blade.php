@@ -2,12 +2,21 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
         <title>Blog</title>
+        
         <!-- Fonts -->
-        <link fref=="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
-    <body>
+    
+    <body class='antialiased'>
+        
         <h1>Blog Name</h1>
+        
+        <!-- ブログ投稿画面のリンク挿入 -->
+        <a href="/posts/create">create</a>
+        
         <div class='posts'>
             @foreach ($posts as $post)
                 <div class='post'>
@@ -24,6 +33,8 @@
         <div class='paginate'>
             {{ $posts->links() }}
         </div>
+        
+        
         
     </body>
 </html>

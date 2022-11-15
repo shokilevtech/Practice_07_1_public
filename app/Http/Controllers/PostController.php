@@ -19,8 +19,6 @@ class PostController extends Controller
         //'posts'の中身にgetを使い、インスタンス化した$postを代入。
     }
     
-    
-    
     /**
     * 特定IDのpostを表示する
     *
@@ -31,6 +29,12 @@ class PostController extends Controller
     {
         return view( 'posts/show' ) -> with([ 'post' => $post ]);
         // 'post'はbladeファイルで使う変数。$postの中身はid=1のPostインスタンス。
+    }
+    
+    // ブログ投稿作成画面表示用のコントローラー実装
+    public function create()
+    {
+        return view( 'posts/create' );
     }
     
 }
