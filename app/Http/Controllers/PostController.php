@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 //この場合、App\Models内のPostクラスをインポートしている。
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -38,7 +39,7 @@ class PostController extends Controller
     }
     
     // ブログ投稿作成処理用のコントローラー実装
-    public function store( Request $request, Post $post )
+    public function store( Post $post, PostRequest $request )
     {
         // サーバーに送られたかどうかチェックする→dd( $request->all() );
         $input = $request[ 'post' ];
