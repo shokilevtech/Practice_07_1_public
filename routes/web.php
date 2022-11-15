@@ -14,17 +14,10 @@ use App\Http\Controllers\PostController; //外部にあるPostControllerクラ�
 |
 */
 
-Route::get( '/', [PostController::class, 'index'] );
-
-// ブログ投稿作成画面のルーティング
-Route::get( '/posts/create', [PostController::class, 'create'] );
-
-// '/posts/{対象データのID}'びGetリクエストが来たら、PostControllerのshowメソッドを実行する
-Route::get( '/posts/{post}', [PostController::class, 'show'] );
-
-//ブログ投稿作成実行用ルーティング
-Route::post( '/posts', [PostController::class, 'store'] );
-
-// ブログ投稿編集関連ルーティング
-Route::get( '/posts/{post}/edit', [ PostController::class, 'edit' ] );
-Route::put( '/posts/{post}', [ PostController::class, 'update' ] );
+Route::get( '/', [PostController::class, 'index'] );                    // 初期画面
+Route::get( '/posts/create', [PostController::class, 'create'] );       // 作成画面
+Route::get( '/posts/{post}', [PostController::class, 'show'] );         // 詳細画面
+Route::get( '/posts/{post}/edit', [PostController::class, 'edit'] );    // 編集画面
+Route::post( '/posts', [PostController::class, 'store'] );              // 作成実行
+Route::put( '/posts/{post}', [PostController::class, 'update'] );       // 編集実行
+Route::delete( '/posts/{post}', [PostController::class, 'delete'] );    // 削除実行
