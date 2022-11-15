@@ -37,6 +37,14 @@ class PostController extends Controller
         return view( 'posts/create' );
     }
     
+    // ブログ投稿作成処理用のコントローラー実装
+    public function store( Request $request, Post $post )
+    {
+        // サーバーに送られたかどうかチェックする→dd( $request->all() );
+        $input = $request[ 'post' ];
+        $post -> fill( $input ) -> save();
+        return redirect( '/posts/' . $post -> id );
+    }
 }
 ?>
 
