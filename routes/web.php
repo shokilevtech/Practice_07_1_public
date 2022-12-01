@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController; //外部にあるPostControllerクラスをインポート
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,4 @@ Route::get( '/posts/{post}/edit', [PostController::class, 'edit'] );    // 編�
 Route::post( '/posts', [PostController::class, 'store'] );              // 作成実行
 Route::put( '/posts/{post}', [PostController::class, 'update'] );       // 編集実行
 Route::delete( '/posts/{post}', [PostController::class, 'delete'] );    // 削除実行
+Route::get('/categories/{category}', [CategoryController::class,'index']);  //カテゴリー一覧画面

@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -28,10 +29,10 @@ class PostController extends Controller
         // 'post'はbladeファイルで使う変数。$postの中身はid=1のPostインスタンス。
     }
     
-    // ブログ投稿作成画面表示用のコントローラー実装
-    public function create()
+    // ブログにカテゴリーを表示
+    public function create(Category $category)
     {
-        return view( 'posts/create' );
+        return view( 'posts/create' ) -> with( ['categories' => $category -> get()] );
     }
     
     // ブログ投稿作成処理用のコントローラー実装

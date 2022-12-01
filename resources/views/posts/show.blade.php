@@ -11,6 +11,10 @@
     </head>
     
     <body class='antialiased'>
+        <p class='edit'>
+            [ <a href='/posts/{{ $post->id }}/edit'>edit</a> ]
+        </p>
+        
         <h1 class="title">
             {{ $post->title }}
         </h1>
@@ -22,9 +26,7 @@
             </div>
         </div>
         
-        <p class='edit'>
-            [ <a href='/posts/{{ $post->id }}/edit'>edit</a> ]
-        </p>
+        <a href='/categories/{{ $post->category->id }}'>{{ $post->category->name }}</a>
         
         <div class="footer">
             <a href="/">戻る</a>
